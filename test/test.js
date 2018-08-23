@@ -48,35 +48,4 @@ describe('Default option value tests', () => {
     assert.notEqual(actual.test1, 'unexpectedValue', 'Expected value to be unchanged');
     assert.equal(actual.test2, 'expectedValue', 'Expected value to be changed');
   });
-
-  it('Testing substitute values from json file', () => {
-    const options = { configFile: './test/test.json' };
-    const actual = substitute(config, options);
-
-    assert.equal(actual.test1, 'value1');
-    assert.equal(actual.test3, 'value3.1');
-    assert.equal(actual.test4, 'value4.1');
-    assert.equal(actual.test5.test51, 'value5.1');
-  });
-
-  it('Testing that the target can be string value', () => {
-    const options = {configFile: './test/test.json' };
-    const configvalue = JSON.stringify(config);
-    const actual = substitute(configvalue, options);
-
-    assert.isNotObject(actual);
-    assert.notInclude(configvalue, 'value1');
-    assert.include(actual, 'value1');
-    assert.include(actual, 'value3.1');
-    assert.include(actual, 'value4.1');
-    assert.include(actual, 'value5.1');
-    assert.notInclude(actual, '#{key1}');
-  });
-
-  it('Test that value can contain quotes', () => {
-    const options = {configFile: './test/test.json' };
-    const configvalue = JSON.stringify(config);
-    const actual = substitute(configvalue, options);
-    assert.include(actual, 'value \\" with \\" quotes');
-  });
 });

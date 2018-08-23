@@ -1,20 +1,13 @@
 'use strict';
-var fs = require("fs");
 
 function injectDefaultOptions(options) {
   options = options || {};
   options.prefix = options.prefix || '#{';
   options.suffix = options.suffix || '}';
-  options.configFile = options.configFile || process.cwd() + '/config.json';
   options.preserveUnknownTokens = options.preserveUnknownTokens || false;
   options.delimiter = options.delimiter || '.';
   options.extractToken = options.extractToken || null;
 
-  if (options.configFile) {
-    if (fs.existsSync(options.configFile)) {
-      options.tokens = JSON.parse(fs.readFileSync(options.configFile, 'utf8'));
-    }
-  }
   options.tokens = options.tokens || options.global || {};
 
   return options;

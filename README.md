@@ -52,7 +52,6 @@ console.log(config);
 ### Options
  - **prefix**: _string (default `#{`)_
  - **suffix**: _string (default `}`)_
- - **configFile**: Default path to a json file with key and values - _string (default `./config.json`)_
  - **tokens**: A object of string:value pairs. Will be overritten with values from **configFile** if file exists - _object_
  - **preserveUnknownTokens**: _bool (default `false`)_
  - **delimiter**: Tokens delimeter to match target object _string (default `.`)_
