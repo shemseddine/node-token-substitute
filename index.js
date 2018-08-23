@@ -12,7 +12,7 @@ function injectDefaultOptions(options) {
 
   if (options.configFile) {
     if (fs.existsSync(options.configFile)) {
-      options.tokens = require(options.configFile);
+      options.tokens = JSON.parse(fs.readFileSync(options.configFile, 'utf8'));
     }
   }
   options.tokens = options.tokens || options.global || {};
